@@ -14,7 +14,6 @@ const BookSchema = new mongoose.Schema(
         genre: { type: String, required: true },
         location: { type: String, required: true },
         photo: { type: String, required: true },
-        reviews: [{ type: mongoose.Types.ObjectId, ref: "Reviews" }],
     },
     {
         timestamps: true,
