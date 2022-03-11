@@ -14,12 +14,12 @@ const Router = express.Router();
     Method :        GET
 */
 Router.get("/", async (req, res) => {
-    try{
+    try {
         const teachers = await TeacherModel.find();
 
-        return res.json({teachers});
+        return res.json({ teachers });
     } catch (error) {
-        return res.status(500).json({error:error.message});
+        return res.status(500).json({ error: error.message });
     }
 });
 

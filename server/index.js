@@ -16,6 +16,7 @@ import Books from "./API/Books";
 import Teachers from "./API/Teachers";
 import Forum from "./API/Forum";
 import Review from "./API/Review";
+import Upload from "./API/S3Upload";
 
 // Database Connection
 import ConnectDB from "./database/connection";
@@ -37,6 +38,7 @@ googleAuthConfig(passport);
 // Application Routes
 studenthub.use("/auth", Auth);
 studenthub.use("/books", Books);
+studenthub.use("/upload", Upload);
 studenthub.use("/teachers", Teachers);
 studenthub.use("/forum", Forum);
 studenthub.use("/reviews", Review);
