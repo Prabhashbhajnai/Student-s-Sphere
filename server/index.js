@@ -12,6 +12,7 @@ import googleAuthConfig from "./config/google.config";
 
 // microservice routes
 import Auth from "./API/Auth";
+import Books from "./API/Books"
 
 // Database Connection
 import ConnectDB from "./database/connection";
@@ -32,6 +33,7 @@ googleAuthConfig(passport);
 
 // Application Routes
 studenthub.use("/auth", Auth);
+studenthub.use("/books", Books);
 
 studenthub.get("/", (req, res) => res.json({ message: "Setup Success!" }));
 
