@@ -13,10 +13,11 @@ import googleAuthConfig from "./config/google.config";
 // microservice routes
 import Auth from "./API/Auth";
 import Books from "./API/Books";
-import Teachers from "./API/Teachers";
 import Forum from "./API/Forum";
+import Reply from "./API/ForumReply";
 import Review from "./API/Review";
 import Upload from "./API/S3Upload";
+import Teachers from "./API/Teachers";
 
 // Database Connection
 import ConnectDB from "./database/connection";
@@ -38,10 +39,11 @@ googleAuthConfig(passport);
 // Application Routes
 studenthub.use("/auth", Auth);
 studenthub.use("/books", Books);
+studenthub.use("/forum", Forum);
+studenthub.use("/reply", Reply);
+studenthub.use("/reviews", Review);
 studenthub.use("/upload", Upload);
 studenthub.use("/teachers", Teachers);
-studenthub.use("/forum", Forum);
-studenthub.use("/reviews", Review);
 
 studenthub.get("/", (req, res) => res.json({ message: "Setup Success!" }));
 

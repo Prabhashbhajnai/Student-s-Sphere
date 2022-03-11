@@ -1,5 +1,6 @@
 // Libraries
 import express from "express";
+import passport from "passport";
 
 // Database Model
 import { ForumModel } from "../../Database/allModels";
@@ -38,6 +39,27 @@ Router.get("/:_id", async (req, res) => {
             return res.status(404).json({ error: "Question not found" });
 
         return res.json({ question });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
+
+/* 
+    Route:          /new
+    Description:    POST new question
+    Params:         none
+    Access:         Public
+    Method :        POST
+*/
+Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+    try {
+        const { _id } = req.session.passport.user._doc;
+
+        const { questionData } = req.body;
+
+        await ForumModel.create({ ...questionData, user: _id });
+
+        return res.json({ question: "Sucessfully posted" });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }

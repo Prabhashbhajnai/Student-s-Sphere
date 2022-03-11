@@ -1,6 +1,5 @@
 // Libraries
 import express from "express";
-import passport from "passport";
 import multer from "multer";
 
 // Utilities
