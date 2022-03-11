@@ -9,6 +9,7 @@ import passport from "passport";
 
 // import configs
 import googleAuthConfig from "./config/google.config";
+import routeConfig from "./config/route.config";
 
 // microservice routes
 import Auth from "./API/Auth";
@@ -35,6 +36,7 @@ studenthub.use(cors());
 
 // passport config
 googleAuthConfig(passport);
+routeConfig(passport);
 
 // Application Routes
 studenthub.use("/auth", Auth);
