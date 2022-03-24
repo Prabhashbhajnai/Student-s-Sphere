@@ -1,15 +1,14 @@
-import Footer from "./components/Footer";
-import Landing from "./components/Landing";
-import "./App.css";
-import NavigationBar from "./components/Navbar";
+// HOC
+import HomeLayoutHOC from "./HOC/Home.Hoc";
+
+// Components
+import Temp from "./components/Temp";
 
 function App() {
   return (
-    <div>
-      <NavigationBar/>
-      <Landing></Landing>
-      <Footer></Footer>
-    </div>
+    <>
+      <HomeLayoutHOC path="/" exact component={Temp} />
+    </>
   );
 }
 
