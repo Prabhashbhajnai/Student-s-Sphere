@@ -4,10 +4,13 @@ import HomeLayoutHOC from "./HOC/Home.Hoc";
 // Components
 import Temp from "./components/Temp";
 
+// Pages
+import HomePage from "./Pages/Home";
+
 function App() {
   return (
     <>
-      <HomeLayoutHOC path="/" exact component={Temp} />
+      <HomeLayoutHOC path="/" exact component={HomePage} />
     </>
   );
 }

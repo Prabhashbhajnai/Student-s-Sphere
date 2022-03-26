@@ -7,7 +7,7 @@ const HomeLayout = (props) => {
     return (
         <>
             <Navbar />
-            <div className='container mx-auto'>
+            <div className=''>
                 {props.children}
             </div>
 
