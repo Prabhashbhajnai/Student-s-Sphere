@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const LibraryCard = (props) => {
     return (
         <Link to={`/library/${props.route}`} style={{ textDecoration: 'none', color: 'black' }} className="w-full md:w-1/3 lg:w-1/4 pt-5">
-            <div className="bg-white p-3 w-full rounded-2xl transition duration-700 ease-in-out hover:shadow-lg transform transition duration-1000 hover:scale-105 overflow-hidden ">
+            <div className="bg-white p-3 w-full rounded-2xl ease-in-out hover:shadow-lg transform transition duration-1000 hover:scale-105 overflow-hidden ">
                 <div className="w-full h-56 lg:64 relative">
                     <img
                         src={props.photos}
