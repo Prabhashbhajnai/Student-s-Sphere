@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaUserAlt } from "react-icons/fa";
 import { RiSearch2Line } from "react-icons/ri";
 
@@ -8,12 +9,14 @@ import logo from "../../Assets/logo.png"
 const MobileNav = () => {
     return (
         <div className="flex w-full items-center justify-between lg:hidden">
-            <div className="w-28 h-28">
-                <img src={logo}
-                    alt="logo"
-                    className="w-full h-full"
-                />
-            </div>
+            <Link to={"/"}>
+                <div className="w-28 h-28">
+                    <img src={logo}
+                        alt="logo"
+                        className="w-full h-full"
+                    />
+                </div>
+            </Link>
             <div className="flex items-center gap-3">
                 <button className="bg-customPink-200  text-white py-2 px-3 rounded-full">
                     UseApp
@@ -31,14 +34,16 @@ const LargeNav = () => {
         <>
             <div className="flex container px-3">
                 <div className="hidden w-full mr-20 items-center justify-between lg:flex gap-5 ">
-                    <div className="w-28 h-24">
-                        <img
-                            src={logo}
-                            alt="logo"
-                            className="w-full h-full"
-                        />
-                    </div>
-                    <h1 className='text-2xl w-72 mr-6'>Student's Hub</h1>
+                    <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }} className='flex items-center gap-4'>
+                        <div className="w-28 h-24">
+                            <img
+                                src={logo}
+                                alt="logo"
+                                className="w-full h-full"
+                            />
+                        </div>
+                        <h1 className='text-2xl w-72 mr-6'>Student's Hub</h1>
+                    </Link>
                     <div className="w-2/4 mr-56 bg-white shadow-md p-3 border border-gray-200 rounded">
                         <div className="flex items-center gap-2 ">
                             <RiSearch2Line />

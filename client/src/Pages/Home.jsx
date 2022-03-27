@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import HomeButtons from '../components/Home/Buttons';
@@ -6,7 +7,7 @@ import HomeButtons from '../components/Home/Buttons';
 // images
 import laptop from "../Images/laptop.jpg"
 
-const HomePage = () => {
+const HomePage = (props) => {
     return (
         <>
             <div className='flex flex-col gap-20'>
@@ -22,7 +23,9 @@ const HomePage = () => {
                         <p>A one stop destination for students. Here you can find a library specifically designed for students along with previous year question papers. New students can also interact with seniors in order to ask questions about the college on the forum.</p>
                         <p>Click below buttons to visit respective sections: </p>
                         <div className='flex gap-5 mt-2'>
-                            <HomeButtons>Library</HomeButtons>
+                            <Link to="/library" style={{ textDecoration: 'none', color: 'black' }}>
+                                <HomeButtons>Library</HomeButtons>
+                            </Link>
                             <HomeButtons>Forum</HomeButtons>
                             <HomeButtons>Resume Generator</HomeButtons>
                         </div>
