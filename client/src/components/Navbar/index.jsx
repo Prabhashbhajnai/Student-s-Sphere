@@ -32,7 +32,7 @@ const MobileNav = () => {
 const LargeNav = () => {
     return (
         <>
-            <div className="flex container px-3">
+            <div className="flex container px-3 bg-grey-50">
                 <div className="hidden w-full mr-20 items-center justify-between lg:flex gap-5 ">
                     <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }} className='flex items-center gap-4'>
                         <div className="w-28 h-24">
