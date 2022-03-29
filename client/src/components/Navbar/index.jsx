@@ -32,10 +32,10 @@ const MobileNav = () => {
 const LargeNav = () => {
     return (
         <>
-            <div className="flex container px-3 bg-grey-50">
+            <div className="flex w-full bg-grey-50">
                 <div className="hidden w-full mr-20 items-center justify-between lg:flex gap-5 ">
                     <Link to={"/"} style={{ textDecoration: 'none', color: 'black' }} className='flex items-center gap-4'>
-                        <div className="w-28 h-24">
+                        <div className="pl-2 w-28 h-24">
                             <img
                                 src={logo}
                                 alt="logo"
@@ -71,7 +71,7 @@ const LargeNav = () => {
 const Navbar = () => {
     return (
         <>
-            <nav className="px-2 py-0 lg:p-4 flex shadow-md lg:shadow-none w-full flex-col items-center">
+            <nav className="py-0 flex shadow-md lg:shadow-none w-full flex-col items-center">
                 <MobileNav />
                 <LargeNav />
             </nav>

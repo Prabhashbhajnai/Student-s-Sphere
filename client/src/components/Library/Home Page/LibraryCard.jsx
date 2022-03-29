@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
 const LibraryCard = (props) => {
     return (
         <Link to={`/library/${props.route}`} style={{ textDecoration: 'none', color: 'black' }} className="w-full md:w-1/3 lg:w-1/4 pt-5">
