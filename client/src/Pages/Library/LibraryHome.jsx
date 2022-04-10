@@ -25,7 +25,7 @@ const LibraryHome = () => {
             name: "Question Paper",
             photos: "https://media.istockphoto.com/photos/note-paper-with-question-mark-on-orange-background-picture-id1190601200?k=20&m=1190601200&s=612x612&w=0&h=CG9kIStbdjsgcbvmxt6aqnh9hZiF2jbJOGcoqMj412k=",
             category: ["Physics", "Chemistry", "Maths", "Python"],
-            route: "quespaper"
+            route: "teacher"
         },
         {
             _id: "123456-4",
