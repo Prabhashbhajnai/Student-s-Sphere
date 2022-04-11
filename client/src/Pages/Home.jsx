@@ -26,7 +26,9 @@ const HomePage = (props) => {
                             <Link to="/library" style={{ textDecoration: 'none', color: 'black' }}>
                                 <HomeButtons>Library</HomeButtons>
                             </Link>
-                            <HomeButtons>Forum</HomeButtons>
+                            <Link to="/forum" style={{ textDecoration: 'none', color: 'black' }}>
+                                <HomeButtons>Forum</HomeButtons>
+                            </Link>
                             <HomeButtons>Resume Generator</HomeButtons>
                         </div>
                     </div>
