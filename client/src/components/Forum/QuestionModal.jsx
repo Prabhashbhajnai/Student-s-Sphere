@@ -44,7 +44,7 @@ export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+                            <div className="inline-block w-full max-w-4xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                                 <Dialog.Title
                                     as="h3"
                                     className="text-lg font-medium leading-6 text-gray-900"
@@ -54,10 +54,19 @@ export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
                                 <div className="mt-2">
                                     <form className="flex flex-col gap-4">
                                         <div className="w-full flex flex-col gap-2">
-                                            <label htmlFor="subject">Write your question here</label>
+                                            <label htmlFor="subject">Question</label>
+                                            <input
+                                                type="text"
+                                                id="subject"
+                                                placeholder="How is the college?"
+                                                className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
+                                            />
+                                        </div>
+                                        <div className="w-full flex flex-col gap-2">
+                                            <label htmlFor="subject">Describe your question</label>
                                             <textarea
                                                 id="reviewText"
-                                                placeholder="How is the college?"
+                                                placeholder="Description"
                                                 rows="10"
                                                 className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                                             />

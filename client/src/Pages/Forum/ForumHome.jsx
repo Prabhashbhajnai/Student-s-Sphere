@@ -8,7 +8,7 @@ const ForumHome = () => {
     return (
         <>
             <div className='flex bg-grey-50'>
-                <div className='flex flex-col w-9/12 gap-3 items-center'>
+                <div className='flex flex-col mb-4 w-9/12 gap-3 items-center'>
                     <QuestionCard />
                     <QuestionCard />
                     <QuestionCard />

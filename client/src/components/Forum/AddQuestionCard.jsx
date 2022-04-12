@@ -11,7 +11,7 @@ const AddQuestionCard = () => {
 
     return (
         <>
-            <QuestionModal isOpen={isOpen} setIsOpen={setIsOpen} />
+            <QuestionModal isOpen={isOpen} setIsOpen={setIsOpen} className='w-3/5' />
             <button onClick={openModal} className='flex flex-wrap items-center text-black mt-4'>
                 Post a Question <MdArrowRight className='text-lg' />
             </button>
