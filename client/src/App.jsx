@@ -25,6 +25,7 @@ import Questionpaper from "./Pages/Library/Questionpaper";
 
 // Forum Page
 import ForumHome from "./Pages/Forum/ForumHome";
+import Question from "./Pages/Forum/Question";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
 
       {/* Forum routes */}
       <ForumHomeLayoutHOC path="/forum" exact component={ForumHome} />
-      <ForumQuestionLayoutHOC path="/forum/:id" exact component={Temp} />
+      <ForumQuestionLayoutHOC path="/forum/:id" exact component={Question} />
     </>
   );
 }
