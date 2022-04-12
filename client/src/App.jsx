@@ -9,6 +9,7 @@ import LibraryQuestionpaperLayoutHOC from "./HOC/Library/Questionpaper.Library.H
 
 // Forum HOC
 import ForumHomeLayoutHOC from "./HOC/Forum/Home.Forum.Hoc";
+import ForumQuestionLayoutHOC from "./HOC/Forum/Question.Forum.Hoc";
 
 // Components
 import Temp from "./components/Temp";
@@ -38,7 +39,7 @@ function App() {
 
       {/* Forum routes */}
       <ForumHomeLayoutHOC path="/forum" exact component={ForumHome} />
-
+      <ForumQuestionLayoutHOC path="/forum/:id" exact component={Temp} />
     </>
   );
 }
