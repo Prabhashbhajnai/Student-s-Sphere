@@ -1,11 +1,14 @@
 import React from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
 
+// components
+import ReplyCard from '../../components/Forum/ReplyCard';
+
 const Question = () => {
     return (
         <>
-            <div className='px-24 mt-7'>
-                <div className='w-3/5'>
+            <div className='flex px-24 mt-7'>
+                <div className='flex flex-wrap w-3/5'>
                     <div className='flex mb-3 gap-5 items-center'>
                         <FaRegUserCircle className='text-5xl' />
                         <div className=''>
@@ -16,7 +19,7 @@ const Question = () => {
                     <h1 className='font-serif text-5xl pb-3 border-b-2 border-grey-100'>How did Naruto get food as a child?</h1>
                     <p className='mt-4 font-sans text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi aspernatur minus, ex dolore quae labore officia ipsam est iure commodi eaque suscipit consequatur? Quas, distinctio. Cum aliquam est explicabo ut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ea molestias eligendi voluptatum magnam atque distinctio consequuntur! Consequuntur accusantium eos ipsa, possimus velit facere molestiae voluptate quos, dolorum ut eum? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, eum! Impedit omnis a libero quisquam id? Est praesentium error illum iure necessitatibus minima cupiditate, cum inventore fugit, rerum nesciunt tempore!</p>
 
-                    <form className='mt-3 relative'>
+                    <form className='mt-3 w-full relative'>
                         <input
                             type="text"
                             id="TextArea"
@@ -28,6 +31,15 @@ const Question = () => {
                             </button>
                         </div>
                     </form>
+
+                    <div className='bg-grey-50 mt-4'>
+                        <div className='w-full h-full mt-4'>
+                            <div className='flex flex-col gap-3'>
+                                <ReplyCard />
+                                <ReplyCard />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div >
         </>
