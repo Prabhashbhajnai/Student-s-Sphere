@@ -39,6 +39,11 @@ function App() {
       <LibraryTeacherLayoutHOC path="/library/teacher" exact component={Teachers} />
       <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper" exact component={Questionpaper} />
       <BooksLayoutHOC path="/library/books" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/fantasyfiction" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/romance" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/textbook" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/science-fic" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/science-tech" exact component={Temp} />
 
       {/* Forum routes */}
       <ForumHomeLayoutHOC path="/forum" exact component={ForumHome} />
