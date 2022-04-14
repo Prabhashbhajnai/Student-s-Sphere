@@ -23,6 +23,7 @@ import LibraryHome from "./Pages/Library/LibraryHome";
 import Newspaper from "./Pages/Library/Newspaper";
 import Teachers from "./Pages/Library/TeachersPage";
 import Questionpaper from "./Pages/Library/Questionpaper";
+import FantasyFiction from "./Pages/Library/Genre/FantasyFiction";
 
 // Forum Page
 import ForumHome from "./Pages/Forum/ForumHome";
@@ -39,7 +40,7 @@ function App() {
       <LibraryTeacherLayoutHOC path="/library/teacher" exact component={Teachers} />
       <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper" exact component={Questionpaper} />
       <BooksLayoutHOC path="/library/books" exact component={Temp} />
-      <BooksLayoutHOC path="/library/books/fantasyfiction" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/fantasyfiction" exact component={FantasyFiction} />
       <BooksLayoutHOC path="/library/books/romance" exact component={Temp} />
       <BooksLayoutHOC path="/library/books/textbook" exact component={Temp} />
       <BooksLayoutHOC path="/library/books/science-fic" exact component={Temp} />
