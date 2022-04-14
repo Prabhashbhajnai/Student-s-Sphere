@@ -24,6 +24,10 @@ import Newspaper from "./Pages/Library/Newspaper";
 import Teachers from "./Pages/Library/TeachersPage";
 import Questionpaper from "./Pages/Library/Questionpaper";
 import FantasyFiction from "./Pages/Library/Genre/FantasyFiction";
+import Romance from "./Pages/Library/Genre/Romance";
+import TextBook from "./Pages/Library/Genre/TextBook";
+import ScienceFiction from "./Pages/Library/Genre/ScienceFiction";
+import ScienceTech from "./Pages/Library/Genre/ScienceTech";
 
 // Forum Page
 import ForumHome from "./Pages/Forum/ForumHome";
@@ -41,10 +45,10 @@ function App() {
       <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper" exact component={Questionpaper} />
       <BooksLayoutHOC path="/library/books" exact component={Temp} />
       <BooksLayoutHOC path="/library/books/fantasyfiction" exact component={FantasyFiction} />
-      <BooksLayoutHOC path="/library/books/romance" exact component={Temp} />
-      <BooksLayoutHOC path="/library/books/textbook" exact component={Temp} />
-      <BooksLayoutHOC path="/library/books/science-fic" exact component={Temp} />
-      <BooksLayoutHOC path="/library/books/science-tech" exact component={Temp} />
+      <BooksLayoutHOC path="/library/books/romance" exact component={Romance} />
+      <BooksLayoutHOC path="/library/books/textbook" exact component={TextBook} />
+      <BooksLayoutHOC path="/library/books/science-fic" exact component={ScienceFiction} />
+      <BooksLayoutHOC path="/library/books/science-tech" exact component={ScienceTech} />
 
       {/* Forum routes */}
       <ForumHomeLayoutHOC path="/forum" exact component={ForumHome} />
