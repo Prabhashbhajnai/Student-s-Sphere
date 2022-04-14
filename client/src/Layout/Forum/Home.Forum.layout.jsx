@@ -1,12 +1,12 @@
 import React from 'react'
 
 // components
-import Navbar from '../../components/Navbar';
+import ForumNavbar from '../../components/Navbar/ForumNavbar';
 
 const ForumHomeLayout = (props) => {
     return (
         <>
-            <Navbar />
+            <ForumNavbar />
             <div className=''>
                 {props.children}
             </div>

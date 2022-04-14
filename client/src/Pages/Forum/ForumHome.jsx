@@ -15,9 +15,6 @@ const ForumHome = () => {
                     <QuestionCard />
                     <QuestionCard />
                 </div>
-                <div className='h-10 sticky top-0'>
-                    <AddQuestionCard />
-                </div>
             </div>
         </>
     );
