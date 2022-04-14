@@ -6,6 +6,7 @@ import LibraryHomeLayoutHOC from "./HOC/Library/Home.Library.Hoc";
 import NewspaperLayoutHOC from "./HOC/Library/Newspaper.Library.Hoc";
 import LibraryTeacherLayoutHOC from "./HOC/Library/Teachers.Library.Hoc";
 import LibraryQuestionpaperLayoutHOC from "./HOC/Library/Questionpaper.Library.Hoc";
+import BooksLayoutHOC from "./HOC/Library/Books.Library.Hoc";
 
 // Forum HOC
 import ForumHomeLayoutHOC from "./HOC/Forum/Home.Forum.Hoc";
@@ -37,6 +38,7 @@ function App() {
       <NewspaperLayoutHOC path="/library/newspaper" exact component={Newspaper} />
       <LibraryTeacherLayoutHOC path="/library/teacher" exact component={Teachers} />
       <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper" exact component={Questionpaper} />
+      <BooksLayoutHOC path="/library/books" exact component={Temp} />
 
       {/* Forum routes */}
       <ForumHomeLayoutHOC path="/forum" exact component={ForumHome} />
