@@ -29,6 +29,7 @@ import Romance from "./Pages/Library/Genre/Romance";
 import TextBook from "./Pages/Library/Genre/TextBook";
 import ScienceFiction from "./Pages/Library/Genre/ScienceFiction";
 import ScienceTech from "./Pages/Library/Genre/ScienceTech";
+import SpecificBook from "./Pages/Library/Specific Book/SpecificBook";
 
 // Forum Page
 import ForumHome from "./Pages/Forum/ForumHome";
@@ -50,7 +51,7 @@ function App() {
       <BooksLayoutHOC path="/library/books/textbook" exact component={TextBook} />
       <BooksLayoutHOC path="/library/books/science-fic" exact component={ScienceFiction} />
       <BooksLayoutHOC path="/library/books/science-tech" exact component={ScienceTech} />
-      <IndividualBookLayoutHOC path="/library/books/category/:id" exact component={Temp} />
+      <IndividualBookLayoutHOC path="/library/books/category/:id" exact component={SpecificBook} />
 
       {/* Forum routes */}
       <ForumHomeLayoutHOC path="/forum" exact component={ForumHome} />

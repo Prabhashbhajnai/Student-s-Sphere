@@ -8,7 +8,7 @@ const IndividualBookLayout = (props) => {
     return (
         <>
             <Navbar />
-            <div className="container px-20 mt-4">
+            <div className="container mx-auto py-10 px-4 lg:px-32">
                 <IndividualBook 
                     image={"https://edit.org/images/cat/book-covers-big-2019101610.jpg"} 
                     title={"Book Title"}
@@ -19,6 +19,7 @@ const IndividualBookLayout = (props) => {
                     date={"29-Nov-21"}
                     isbn={123456789}
                 />
+                <div className='container'>{props.children}</div>
             </div>
         </>
     );
