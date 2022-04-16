@@ -47,7 +47,7 @@ function App() {
       <LibraryHomeLayoutHOC path="/library" exact component={LibraryHome} />
       <NewspaperLayoutHOC path="/library/newspaper" exact component={Newspaper} />
       <LibraryTeacherLayoutHOC path="/library/teacher" exact component={Teachers} />
-      <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper" exact component={Questionpaper} />
+      <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper/:id" exact component={Questionpaper} />
       <Route path="/library/books" exact>
         <Redirect to="/library/books/fantasyfiction" />
       </Route>

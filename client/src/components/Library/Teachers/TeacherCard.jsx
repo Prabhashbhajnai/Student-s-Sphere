@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TeacherCard = (props) => {
     return (
-        <>
+        <Link to={`/library/teacher/questionpaper/${props._id}`} style={{ textDecoration: 'none', color: 'black' }}>
             <div className="bg-white p-2 mb-2 mt-3 rounded-2xl transition duration-700 ease-in-out hover:shadow-lg md:w-1/2 lg:w-64">
                 <div className="w-full h-56 relative px-2">
                     <img
@@ -17,7 +18,7 @@ const TeacherCard = (props) => {
                     </div>
                 </div>
             </div>
-        </>
+        </Link>
     );
 };
 
