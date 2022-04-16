@@ -1,23 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+// redux action
+import { getSpecificBook } from '../../Redux/Reducer/books/book.action';
 
 // components
 import Navbar from '../../components/Navbar';
 import IndividualBook from '../../components/Library/IndividualBook/IndividualBook';
 
 const IndividualBookLayout = (props) => {
+
+    const [book, setBook] = useState({
+        photo: "",
+        title: "",
+        description: "Not Available",
+        date: "Not Available",
+        author: "Not Available",
+        aboutAuthor: "Not Available",
+        publisher: "Not Available",
+        isbn: "Not Available",
+        location: ""
+    });
+
+    const { id } = useParams()
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSpecificBook(id)).then((data) => {
+            setBook((prev) => ({
+                ...prev,
+                ...data.payload.books
+            }));
+        });
+
+    }, []);
+
     return (
         <>
             <Navbar />
-            <div className="container mx-auto py-10 px-4 lg:px-32">
-                <IndividualBook 
-                    image={"https://edit.org/images/cat/book-covers-big-2019101610.jpg"} 
-                    title={"Book Title"}
-                    description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos id in blanditiis amet quo magni veritatis repellat praesentium expedita. Reprehenderit velit error provident asperiores voluptatibus ab numquam corporis architecto.Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos id in blanditiis amet quo magni veritatis repellat praesentium expedita. Reprehenderit velit error provident asperiores voluptatibus ab numquam corporis architectoLorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos id in blanditiis amet quo magni veritatis repellat praesentium expedita. Reprehenderit velit error provident asperiores voluptatibus ab numquam corporis architectoLorem ipsum dolor sit amet consectetur adipisicing elit. Facilis eos id in blanditiis amet quo magni veritatis repellat praesentium expedita. Reprehenderit velit error provident asperiores voluptatibus ab numquam corporis architecto"}
-                    author={"Author"}
-                    authorAbout={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur.Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eveniet natus harum, voluptate iusto delectus impedit ex, ab debitis, ratione quasi animi accusamus culpa illum doloribus. Porro architecto consectetur aspernatur."}
-                    publisher={"Publisher"}
-                    date={"29-Nov-21"}
-                    isbn={123456789}
+            <div className="container mx-auto py-10 px-4 lg:px-24">
+                <IndividualBook
+                    image={book.photo}
+                    title={book.title}
+                    description={book.description}
+                    author={book.author}
+                    authorAbout={book.aboutAuthor}
+                    publisher={book.publication}
+                    date={book.date}
+                    isbn={book.ISBN}
+                    location={book.location}
                 />
                 <div className='container'>{props.children}</div>
             </div>

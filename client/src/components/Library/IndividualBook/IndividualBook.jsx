@@ -9,7 +9,7 @@ const IndividualBook = (props) => {
             <div className='w-full md:hidden'>
                 <div className=' border-b-2 scrollbar-hide'>
                     <h1 className='font-semibold text-2xl'>{props.title}</h1>
-                    <h6>(Author)</h6>
+                    <h6>({props.author})</h6>
                 </div>
                 <img
                     src={props.image}
@@ -33,7 +33,9 @@ const IndividualBook = (props) => {
 
                 <div className='flex flex-wrap gap-3 mt-5'>
                     <Buttons isActive>Issue</Buttons>
-                    <Buttons isActive>Read Online</Buttons>
+                    <a href={props.location} target="_blank" >
+                        <Buttons isActive>Read Online</Buttons>
+                    </a>
                 </div>
             </div>
 
@@ -50,11 +52,13 @@ const IndividualBook = (props) => {
                     <div className='flex items-center justify-between border-b-2 border-grey-200 pb-2'>
                         <div>
                             <h1 className='text-4xl font-semibold'>{props.title}</h1>
-                            <h6>(Author)</h6>
+                            <h6>({props.author})</h6>
                         </div>
                         <div className='flex gap-3'>
                             <Buttons isActive>Issue</Buttons>
-                            <Buttons isActive>Read Online</Buttons>
+                            <a href={props.location} target="_blank" style={{ textDecoration: 'none', color: 'black' }} >
+                                <Buttons isActive>Read Online</Buttons>
+                            </a>
                         </div>
                     </div>
 
