@@ -4,8 +4,9 @@ import { MdArrowRight } from 'react-icons/md';
 
 
 // components
-import {NextArrow, PrevArrow} from '../../../components/CarousalArrows'
+import { NextArrow, PrevArrow } from '../../../components/CarousalArrows'
 import SimilarBooksCard from '../../../components/Library/IndividualBook/SimilarBooksCard';
+import AddReviewCard from '../../../components/Review/AddReviewCard';
 import ReviewCard from '../../../components/Library/IndividualBook/ReviewCard';
 
 const SpecificBook = () => {
@@ -92,7 +93,9 @@ const SpecificBook = () => {
                             style={{ height: "fit-content" }}
                             className="hidden md:flex md:w-4/12 sticky rounded-xl fixed top-2 bg-white p-3 shadow-md flex flex-col gap-4"
                         >
-                            <button className='flex flex-wrap items-center text-Library-400'>Write a Review <MdArrowRight className='text-lg' /></button>
+                            <button className='flex flex-wrap items-center text-Library-400'>
+                                <AddReviewCard />
+                            </button>
                         </aside>
                     </div>
                 </div>
