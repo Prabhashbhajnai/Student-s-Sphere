@@ -44,7 +44,7 @@ const SpecificBook = () => {
         <>
             <div className="flex flex-col mt-15 md:mt-80">
                 <h4 className='text-2xl font-bold'>Readers who viewed this also viewed</h4>
-                <div className='flex flex-col h-32 w-72 gap-4 mt-3'>
+                <div className='flex flex-col py-3 ml-6 w-full gap-4 mt-3'>
                     <Slider {...settings}>
                         <SimilarBooksCard
                             image="https://edit.org/images/cat/book-covers-big-2019101610.jpg"

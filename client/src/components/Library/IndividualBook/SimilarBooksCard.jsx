@@ -3,7 +3,7 @@ import React from "react";
 const SimilarBooksCard = (props) => {
     return (
         <>
-            <div className="w-48">
+            <div className="w-48 ml-4 h-[18rem]">
                 <div className="bg-white shadow rounded-md">
                     <div className="w-48 h-48 ">
                         <img
