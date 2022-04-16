@@ -41,3 +41,16 @@ export const getTextbook = () => async (dispatch) => {
         return dispatch({ type: "ERROR", payload: error });
     }
 };
+
+export const getScifi = () => async (dispatch) => {
+    try {
+        const bookList = await axios({
+            method: "GET",
+            url: `http://localhost:4000/books/?genre=Scifi`,
+        });
+
+        return dispatch({ type: GET_BOOKS, payload: bookList.data });
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+    }
+};
