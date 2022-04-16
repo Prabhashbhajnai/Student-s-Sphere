@@ -1,3 +1,6 @@
+// Library
+import { Route, Redirect } from "react-router-dom";
+
 // HOC 
 import HomeLayoutHOC from "./HOC/Home.Hoc";
 
@@ -45,7 +48,9 @@ function App() {
       <NewspaperLayoutHOC path="/library/newspaper" exact component={Newspaper} />
       <LibraryTeacherLayoutHOC path="/library/teacher" exact component={Teachers} />
       <LibraryQuestionpaperLayoutHOC path="/library/teacher/questionpaper" exact component={Questionpaper} />
-      <BooksLayoutHOC path="/library/books" exact component={Temp} />
+      <Route path="/library/books" exact>
+        <Redirect to="/library/books/fantasyfiction" />
+      </Route>
       <BooksLayoutHOC path="/library/books/fantasyfiction" exact component={FantasyFiction} />
       <BooksLayoutHOC path="/library/books/romance" exact component={Romance} />
       <BooksLayoutHOC path="/library/books/textbook" exact component={TextBook} />
