@@ -2,7 +2,7 @@
 import express from "express";
 
 // Database model
-import { QuesPaperModel } from "../../database/quespaper";
+import { QuesPaperModel } from "../../Database/allModels";
 
 const Router = express.Router();
 
@@ -15,9 +15,9 @@ const Router = express.Router();
 */
 Router.get("/:quesid", async (req, res) => {
     try {
-        const reply = await ForumReplyModel.find({ question: req.params.teacher });
+        const reply = await QuesPaperModel.find({ question: req.params.teacher });
 
-        return res.json({ reply });
+        return res.json({ quespaper });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
