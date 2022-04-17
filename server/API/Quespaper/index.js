@@ -13,9 +13,9 @@ const Router = express.Router();
     Access:         Public
     Method :        GET
 */
-Router.get("/:quesid", async (req, res) => {
+Router.get("/:teacher", async (req, res) => {
     try {
-        const quespaper = await QuesPaperModel.find({ question: req.params.teacher });
+        const quespaper = await QuesPaperModel.find({ teacher: req.params.teacher });
 
         return res.json({ quespaper });
     } catch (error) {
