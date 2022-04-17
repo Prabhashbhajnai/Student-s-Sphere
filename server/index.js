@@ -19,6 +19,7 @@ import Reply from "./API/ForumReply";
 import Review from "./API/Review";
 import Upload from "./API/S3Upload";
 import Teachers from "./API/Teachers";
+import Quespaper from "./API/Quespaper";
 
 // Database Connection
 import ConnectDB from "./database/connection";
@@ -46,6 +47,7 @@ studenthub.use("/reply", Reply);
 studenthub.use("/reviews", Review);
 studenthub.use("/upload", Upload);
 studenthub.use("/teachers", Teachers);
+studenthub.use("/quespaper", Quespaper);
 
 studenthub.get("/", (req, res) => res.json({ message: "Setup Success!" }));
 
