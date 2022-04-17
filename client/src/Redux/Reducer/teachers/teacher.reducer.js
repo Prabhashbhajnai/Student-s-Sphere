@@ -1,7 +1,8 @@
-import { GET_TEACHERS } from "./teacher.type";
+import { GET_TEACHERS, GET_SPECIFIC_TEACHER } from "./teacher.type";
 
 const INITIAL_STATE = {
     teachers: [],
+    selectedTeacher: {},
 };
 
 const booksReducer = (state = INITIAL_STATE, action) => {
@@ -10,6 +11,12 @@ const booksReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 teachers: action.payload,
+            };
+
+        case GET_SPECIFIC_TEACHER:
+            return {
+                ...state,
+                selectedTeacher: action.payload,
             };
 
         default:
