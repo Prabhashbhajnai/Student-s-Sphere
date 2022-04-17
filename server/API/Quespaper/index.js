@@ -15,7 +15,7 @@ const Router = express.Router();
 */
 Router.get("/:quesid", async (req, res) => {
     try {
-        const reply = await QuesPaperModel.find({ question: req.params.teacher });
+        const quespaper = await QuesPaperModel.find({ question: req.params.teacher });
 
         return res.json({ quespaper });
     } catch (error) {
