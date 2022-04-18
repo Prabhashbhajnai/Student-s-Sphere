@@ -2,6 +2,7 @@ import { GET_QUESTION, GET_SPECIFIC_QUESTION, POST_QUESTION } from "./forum.type
 
 const INITIAL_STATE = {
     questions: [],
+    selectedQuestion: {},
 };
 
 const forumReducer = (state = INITIAL_STATE, action) => {

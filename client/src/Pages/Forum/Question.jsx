@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 // components
@@ -10,8 +10,13 @@ import FAQCard from '../../components/Forum/FAQCard';
 // redux action
 import { getSpecificQuestion } from '../../Redux/Reducer/Forum/forum.action';
 import { getUser } from '../../Redux/Reducer/user/user.action';
+import { getReply } from '../../Redux/Reducer/ForumReply/forumReply.action';
+import { postReply } from '../../Redux/Reducer/ForumReply/forumReply.action';
 
-const Question = (props) => {
+const Question = () => {
+
+    const { id } = useParams()
+    const dispatch = useDispatch();
 
     const [sourceLiist, setSourceList] = useState([
         {
@@ -54,8 +59,11 @@ const Question = (props) => {
 
     const [user, setUser] = useState({});
 
-    const { id } = useParams()
-    const dispatch = useDispatch();
+    const [reply, setReply] = useState([]);
+
+    const reduxState = useSelector(
+        (globalStore) => globalStore.forum.selectedQuestion.question
+    );
 
     useEffect(() => {
         dispatch(getUser(question.user)).then(data => setUser(data.payload.user))
@@ -71,6 +79,34 @@ const Question = (props) => {
 
     }, []);
 
+    useEffect(() => {
+        if (reduxState) {
+            // for review
+            dispatch(getReply(reduxState._id)).then((data) =>
+                setReply(data.payload.reply)
+            );
+        }
+    }, [reduxState]);
+
+    const [replyData, setReplyData] = useState({
+        replyText: "",
+    });
+
+    const handleChange = (e) =>
+        setReplyData(prev => ({ ...prev, [e.target.id]: e.target.value }));
+
+    const submit = () => {
+        dispatch(
+            postReply({
+                ...replyData,
+                question: id,
+            })
+        );
+        /* window.setTimeout(function () {
+            window.location.reload()
+        }, 1000); */
+    }
+
     return (
         <>
             <div className='flex px-24 mt-7'>
@@ -80,7 +116,7 @@ const Question = (props) => {
                             <FaRegUserCircle className='text-5xl' />
                             <div className=''>
                                 <h2 className='font-semibold text-xl'>{user.fullname}</h2>
-                                <h5 className='text-grey-300'>Timestamp</h5>
+                                <h5 className='text-grey-300'>{user.email}</h5>
                             </div>
                         </div>
                         <h1 className='w-full font-serif text-5xl pb-3 border-b-2 border-grey-100'>{question.questionSubject}</h1>
@@ -91,12 +127,15 @@ const Question = (props) => {
                     <form className='mt-3 w-full relative'>
                         <input
                             type="text"
-                            id="TextArea"
+                            id="replyText"
                             placeholder="Add a comment"
+                            value={replyData.replyText}
+                            onChange={handleChange}
                             className="w-full h-12 border border-grey-400 px-3 py-2 rounded-xl focus:outline-grey-400 focus:border-customPink-400 z-0"
                         />
                         <div className='absolute right-2 bottom-2'>
-                            <button className='flex items-center bg-blue-500 text-white px-3 py-1 rounded-3xl border hover:bg-grey-300 hover:text-black'>Submit
+                            <button className='flex items-center bg-blue-500 text-white px-3 py-1 rounded-3xl border hover:bg-grey-300 hover:text-black relative' onClick={submit}>
+                                Submit
                             </button>
                         </div>
                     </form>
@@ -104,8 +143,11 @@ const Question = (props) => {
                     <div className='bg-grey-50 mt-4'>
                         <div className='w-full h-full mt-4'>
                             <div className='flex flex-col gap-3'>
-                                <ReplyCard />
-                                <ReplyCard />
+                                {
+                                    reply.map((replyData) => (
+                                        <ReplyCard {...replyData} />
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
