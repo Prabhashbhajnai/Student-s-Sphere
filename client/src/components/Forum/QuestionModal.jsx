@@ -1,11 +1,44 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+// redux action
+import { postQuestion } from '../../Redux/Reducer/Forum/forum.action';
 
 export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
 
     function closeModal() {
         setIsOpen(false)
     }
+
+    const [questionData, setQuestionData] = useState({
+        questionSubject: "",
+        questionText: ""
+    });
+
+    const { id } = useParams();
+    const dispatch = useDispatch();
+
+    const handleChange = (e) =>
+        setQuestionData(prev => ({ ...prev, [e.target.id]: e.target.value }));
+
+    const submit = () => {
+        dispatch(
+            postQuestion({
+                ...questionData,
+                forums: id,
+            })
+        );
+        setQuestionData({
+            questionSubject: "",
+            questionText: ""
+        });
+        closeModal();
+        /* window.setTimeout(function () {
+            window.location.reload()
+        }, 1000); */
+    };
 
     return (
         <>
@@ -57,17 +90,21 @@ export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
                                             <label htmlFor="subject">Question</label>
                                             <input
                                                 type="text"
-                                                id="subject"
+                                                id="questionSubject"
                                                 placeholder="How is the college?"
+                                                value={questionData.questionSubject}
+                                                onChange={handleChange}
                                                 className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                                             />
                                         </div>
                                         <div className="w-full flex flex-col gap-2">
                                             <label htmlFor="subject">Describe your question</label>
                                             <textarea
-                                                id="reviewText"
+                                                id="questionText"
                                                 placeholder="Description"
                                                 rows="10"
+                                                value={questionData.questionText}
+                                                onChange={handleChange}
                                                 className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                                             />
                                         </div>
@@ -78,7 +115,7 @@ export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
                                     <button
                                         type="button"
                                         className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                                        onClick={closeModal}
+                                        onClick={submit}
                                     >
                                         Submit
                                     </button>

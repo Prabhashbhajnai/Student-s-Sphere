@@ -15,3 +15,17 @@ export const getQuestion = () => async (dispatch) => {
         return dispatch({ type: "ERROR", payload: error })
     }
 };
+
+export const postQuestion = (questionData) => async (dispatch) => {
+    try {
+        await axios({
+            method: "POST",
+            url: `http://localhost:4000/forum/new`,
+            data: { questionData }
+        });
+
+        return dispatch({ type: POST_QUESTION, payload: questionData });
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error })
+    }
+};
