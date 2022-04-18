@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MdArrowRight } from 'react-icons/md';
 import { IoCreateOutline } from 'react-icons/io5'
 
 // components

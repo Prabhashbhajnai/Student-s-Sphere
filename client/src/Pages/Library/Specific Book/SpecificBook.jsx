@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import { MdArrowRight } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux'
 
 // redux action

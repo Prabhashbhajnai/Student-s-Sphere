@@ -7,7 +7,7 @@ import HomeButtons from '../components/Home/Buttons';
 // images
 import laptop from "../Images/laptop.jpg"
 
-const HomePage = (props) => {
+const HomePage = () => {
     return (
         <>
             <div className='flex flex-col gap-20'>

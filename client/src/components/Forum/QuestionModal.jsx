@@ -35,9 +35,9 @@ export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
             questionText: ""
         });
         closeModal();
-        /* window.setTimeout(function () {
+        window.setTimeout(function () {
             window.location.reload()
-        }, 1000); */
+        }, 1000);
     };
 
     return (

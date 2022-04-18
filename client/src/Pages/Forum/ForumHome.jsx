@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // components
 import QuestionCard from '../../components/Forum/QuestionCard';
-import AddQuestionCard from '../../components/Forum/AddQuestionCard';
 import FAQCard from '../../components/Forum/FAQCard';
 
 // redux action
