@@ -1,42 +1,40 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 
 // redux action
-import { postReviews } from '../../Redux/Reducer/review/review.action'
+import { signIn } from '../../Redux/Reducer/auth/auth.action';
 
-export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
+export default function SignIn({ isOpen, setIsOpen }) {
+    const [userData, setUserData] = useState({
+        email: "",
+        password: "",
+    });
+
+    const dispatch = useDispatch();
+
+    const handleChange = (e) =>
+        setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
     function closeModal() {
         setIsOpen(false)
     }
-    
-    const [reviewData, setReviewData] = useState({
-        reviewText: "",
-    });
-
-    const { id } = useParams();
-    const dispatch = useDispatch();
-
-    const handleChange = (e) =>
-    setReviewData(prev => ({ ...prev, [e.target.id]: e.target.value }));
 
     const submit = () => {
-        dispatch(
-            postReviews({
-                ...reviewData,
-                book: id,
-            })
-        );
-        setReviewData({
-            reviewText: ""
+        setUserData({
+            email: "",
+            password: "",
         });
-        closeModal();
-        window.setTimeout(function () {
+        dispatch(signIn(userData));
+        // this is to reload the page after 1 sec
+        /* window.setTimeout(function () {
             window.location.reload()
-        }, 1000);
+        }, 1000); */
     };
+
+    const googlesignin = () => (window.location.href = "http://localhost:4000/auth/google");
+    const pageReload = () => (window.location.reload());
 
     return (
         <>
@@ -80,32 +78,42 @@ export default function QuestionModal({ isOpen, setIsOpen, ...props }) {
                                     as="h3"
                                     className="text-lg font-medium leading-6 text-gray-900"
                                 >
-                                    Add Review
+                                    Sign In
                                 </Dialog.Title>
-                                <div className="mt-2">
-                                    <form className="flex flex-col gap-4">
+                                <div className="mt-2 flex flex-col gap-3 w-full">
+                                    <button onClick={googlesignin} className="py-2 justify-center rounded-lg flex items-center gap-3 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+                                        <FcGoogle className="w-8 h-8" /> Continue with Google
+                                    </button>
+
+                                    <form className="flex flex-col gap-3">
                                         <div className="w-full flex flex-col gap-2">
-                                            <label htmlFor="subject">Review Text</label>
-                                            <textarea
-                                                id="reviewText"
-                                                placeholder="Amazing Book"
-                                                rows="5"
-                                                value={reviewData.reviewText}
+                                            <label htmlFor="email">email</label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                name="email"
                                                 onChange={handleChange}
+                                                value={userData.email}
+                                                placeholder="email@email.com"
                                                 className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                                             />
                                         </div>
+                                        <div className="w-full flex flex-col gap-2">
+                                            <label htmlFor="password">password</label>
+                                            <input
+                                                type="password"
+                                                id="password"
+                                                placeholder="********"
+                                                name="password"
+                                                onChange={handleChange}
+                                                value={userData.password}
+                                                className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
+                                            />
+                                        </div>
+                                        <div onClick={submit} className="w-full text-center bg-Library-400 text-white py-2 rounded-lg cursor-pointer">
+                                            Sign in
+                                        </div>
                                     </form>
-                                </div>
-
-                                <div className="mt-4">
-                                    <button
-                                        type="button"
-                                        className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                                        onClick={submit}
-                                    >
-                                        Submit
-                                    </button>
                                 </div>
                             </div>
                         </Transition.Child>

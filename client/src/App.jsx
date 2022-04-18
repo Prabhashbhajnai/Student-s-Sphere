@@ -1,5 +1,8 @@
 // Library
 import { Route, Redirect } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 // HOC 
 import HomeLayoutHOC from "./HOC/Home.Hoc";
@@ -38,10 +41,31 @@ import SpecificBook from "./Pages/Library/Specific Book/SpecificBook";
 import ForumHome from "./Pages/Forum/ForumHome";
 import Question from "./Pages/Forum/Question";
 
+// Authentication
+import GoogleAuth from "./Pages/GoogleAuth";
+
+// redux action
+import { getMyself } from "./Redux/Reducer/user/user.action";
+
+// axios global settings
+if (localStorage.studentHubUser) {
+  const { token } = JSON.parse(localStorage.studentHubUser);
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}  
+
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (localStorage.studentHubUser) dispatch(getMyself());
+  }, []);
+
   return (
     <>
       <HomeLayoutHOC path="/" exact component={HomePage} />
+
+      <HomeLayoutHOC path="/google/:token" exact component={GoogleAuth} />
 
       {/* Library routes */}
       <LibraryHomeLayoutHOC path="/library" exact component={LibraryHome} />

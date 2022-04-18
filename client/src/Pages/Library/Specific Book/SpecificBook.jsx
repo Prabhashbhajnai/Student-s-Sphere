@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import { MdArrowRight } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux'
 
+// redux action
+import { getReviews } from '../../../Redux/Reducer/review/review.action';
 
 // components
 import { NextArrow, PrevArrow } from '../../../components/CarousalArrows'
@@ -41,6 +44,24 @@ const SpecificBook = () => {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
     };
+
+    const [reviews, setReviews] = useState([]);
+
+    const reduxState = useSelector(
+        (globalStore) => globalStore.books.selectedBook.books
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (reduxState) {
+            // for review
+            dispatch(getReviews(reduxState._id)).then((data) =>
+                setReviews(data.payload.reviews)
+            );
+        }
+    }, [reduxState]);
+
     return (
         <>
             <div className="flex flex-col mt-15 md:mt-80">
@@ -84,10 +105,10 @@ const SpecificBook = () => {
                 <div className='mt-6'>
                     <h4 className="text-xl font-medium">What the readers have to say</h4>
                     <div className='flex gap-5'>
-                        <div>
-                            <ReviewCard />
-                            <ReviewCard />
-                            <ReviewCard />
+                        <div className='w-9/12'>
+                            {reviews.map((reviewData) => (
+                                <ReviewCard {...reviewData} />
+                            ))}
                         </div>
                         <aside
                             style={{ height: "fit-content" }}

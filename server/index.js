@@ -20,6 +20,7 @@ import Review from "./API/Review";
 import Upload from "./API/S3Upload";
 import Teachers from "./API/Teachers";
 import Quespaper from "./API/Quespaper";
+import User from "./API/User";
 
 // Database Connection
 import ConnectDB from "./database/connection";
@@ -41,6 +42,7 @@ routeConfig(passport);
 
 // Application Routes
 studenthub.use("/auth", Auth);
+studenthub.use("/user", User);
 studenthub.use("/books", Books);
 studenthub.use("/forum", Forum);
 studenthub.use("/reply", Reply);
