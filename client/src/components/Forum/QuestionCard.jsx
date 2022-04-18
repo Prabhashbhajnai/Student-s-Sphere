@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // redux action
 import { getUser } from '../../Redux/Reducer/user/user.action';
@@ -16,7 +17,7 @@ const QuestionCard = (props) => {
     }, []);
 
     return (
-        <>
+        <Link to={`/forum/${props._id}`} style={{ textDecoration: 'none', color: 'black' }} className='ml-60 w-full'>
             <div className='mt-4 ml-3 bg-white p-3 w-9/12 rounded-2xl hover:shadow-lg overflow-hidden'>
                 <div className='flex items-center gap-3 mb-4'>
                     <FaRegUserCircle className='text-5xl' />
@@ -30,7 +31,7 @@ const QuestionCard = (props) => {
                 </div>
                 <p>{props.questionText}</p>
             </div>
-        </>
+        </Link>
     );
 };
 
