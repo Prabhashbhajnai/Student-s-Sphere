@@ -29,9 +29,9 @@ export default function SignUp({ isOpen, setIsOpen }) {
             password: "",
         });
         dispatch(signUp(userData));
-        /* window.setTimeout(function () {
+        window.setTimeout(function () {
             window.location.reload()
-        }, 1000); */
+        }, 1000);
     };
 
     const googlesignin = () => (window.location.href = "http://localhost:4000/auth/google");
