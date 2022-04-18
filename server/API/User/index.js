@@ -36,9 +36,9 @@ Method    GET
 Router.get("/:_id", async (req, res) => {
     try {
         const user = await UserModel.findById(req.params._id);
-        const { fullname } = user;
+        const { fullname, email } = user;
 
-        return res.json({ user: { fullname } });
+        return res.json({ user: { fullname, email } });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }

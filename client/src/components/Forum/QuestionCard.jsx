@@ -1,22 +1,34 @@
-import React from 'react';
-import { FaRegUserCircle } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 
-const QuestionCard = () => {
+// redux action
+import { getUser } from '../../Redux/Reducer/user/user.action';
+
+const QuestionCard = (props) => {
+
+    const [user, setUser] = useState({});
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUser(props.user)).then(data => setUser(data.payload.user))
+    }, []);
+
     return (
         <>
             <div className='mt-4 ml-3 bg-white p-3 w-9/12 rounded-2xl hover:shadow-lg overflow-hidden'>
                 <div className='flex items-center gap-3 mb-4'>
                     <FaRegUserCircle className='text-5xl' />
                     <div>
-                        <h1 className='text-xl'>User Name</h1>
-                        <h5 className='text-sm text-grey-300'>Timestamp</h5>
+                        <h1 className='text-xl'>{user.fullname}</h1>
+                        <h5 className='text-sm text-grey-300'>{user.email}</h5>
                     </div>
                 </div>
                 <div className='mb-2'>
-                    <h1 className='font-semibold text-2xl'>How did Naruto get food as a child?</h1>
+                    <h1 className='font-semibold text-2xl'>{props.questionSubject}</h1>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, fugiat magnam architecto accusamus, corporis voluptas quasi excepturi quod consequatur ex corrupti, iste sequi quaerat dolore itaque vero non saepe laboriosam!
-                </p>
+                <p>{props.questionText}</p>
             </div>
         </>
     );

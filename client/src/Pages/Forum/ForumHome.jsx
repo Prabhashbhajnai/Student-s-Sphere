@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // components
 import QuestionCard from '../../components/Forum/QuestionCard';
 import AddQuestionCard from '../../components/Forum/AddQuestionCard';
 import FAQCard from '../../components/Forum/FAQCard';
 
+// redux action
+import { getQuestion } from '../../Redux/Reducer/Forum/forum.action';
 
 const ForumHome = () => {
 
@@ -41,16 +44,29 @@ const ForumHome = () => {
         },
     ])
 
+    const dispatch = useDispatch();
+
+    const [questions, setQuestions] = useState([]);
+
+    useEffect(() => {
+        dispatch(getQuestion());
+    }, []);
+
+    const reduxState = useSelector(
+        (globalStore) => globalStore.forum.questions
+    );
+
+    useEffect(() => {
+        reduxState.forum && setQuestions(reduxState.forum);
+    }, [reduxState.forum])
 
     return (
         <>
             <div className='flex bg-grey-50'>
                 <div className='flex flex-col mb-4 w-9/12 gap-3 items-center'>
-                    <QuestionCard />
-                    <QuestionCard />
-                    <QuestionCard />
-                    <QuestionCard />
-                    <QuestionCard />
+                    {questions.map((questions) => (
+                        <QuestionCard {...questions} key={questions._id} />
+                    ))}
                 </div>
                 <div className='w-1/4 ml-10 px-6 border-l-2 border-grey-100'>
                     <h1 className='border-b-2 border-grey-100 pb-2 text-xl font-medium font-sans '>Frequently Asked Questions</h1>
