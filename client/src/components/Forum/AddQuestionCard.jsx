@@ -8,7 +8,13 @@ import QuestionModal from './QuestionModal';
 const AddQuestionCard = () => {
     let [isOpen, setIsOpen] = useState(false);
 
-    const openModal = () => { setIsOpen(true) };
+    const openModal = () => { 
+        if(!localStorage.studentHubUser){
+            return alert("Please Sign in to post a Question");
+        }
+
+        setIsOpen(true) 
+    };
 
     return (
         <>
