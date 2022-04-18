@@ -1,4 +1,4 @@
-import { GET_QUESTION, POST_QUESTION } from "./forum.type";
+import { GET_QUESTION, GET_SPECIFIC_QUESTION, POST_QUESTION } from "./forum.type";
 
 const INITIAL_STATE = {
     questions: [],
@@ -10,6 +10,12 @@ const forumReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 questions: action.payload,
+            };
+        
+        case GET_SPECIFIC_QUESTION:
+            return {
+                ...state,
+                selectedQuestion: action.payload,
             };
 
         case POST_QUESTION:

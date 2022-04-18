@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegUserCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 // components
 import ReplyCard from '../../components/Forum/ReplyCard';
 import FAQCard from '../../components/Forum/FAQCard';
 
-const Question = () => {
+// redux action
+import { getSpecificQuestion } from '../../Redux/Reducer/Forum/forum.action';
+import { getUser } from '../../Redux/Reducer/user/user.action';
+
+const Question = (props) => {
 
     const [sourceLiist, setSourceList] = useState([
         {
@@ -38,7 +44,32 @@ const Question = () => {
             question: "Are your classes lecture-based or discussion-based?",
             link: "",
         },
-    ])
+    ]);
+
+    const [question, setQuestion] = useState({
+        user: "",
+        questionSubject: "",
+        questionText: "",
+    });
+
+    const [user, setUser] = useState({});
+
+    const { id } = useParams()
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUser(question.user)).then(data => setUser(data.payload.user))
+    }, []);
+
+    useEffect(() => {
+        dispatch(getSpecificQuestion(id)).then((data) => {
+            setQuestion((prev) => ({
+                ...prev,
+                ...data.payload.question
+            }));
+        });
+
+    }, []);
 
     return (
         <>
@@ -48,14 +79,14 @@ const Question = () => {
                         <div className='flex mb-3 gap-5 items-center'>
                             <FaRegUserCircle className='text-5xl' />
                             <div className=''>
-                                <h2 className='font-semibold text-xl'>User Name</h2>
+                                <h2 className='font-semibold text-xl'>{user.fullname}</h2>
                                 <h5 className='text-grey-300'>Timestamp</h5>
                             </div>
                         </div>
-                        <h1 className='w-full font-serif text-5xl pb-3 border-b-2 border-grey-100'>How did Naruto get food as a child?</h1>
+                        <h1 className='w-full font-serif text-5xl pb-3 border-b-2 border-grey-100'>{question.questionSubject}</h1>
                     </div>
 
-                    <p className='mt-4 font-sans text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi aspernatur minus, ex dolore quae labore officia ipsam est iure commodi eaque suscipit consequatur? Quas, distinctio. Cum aliquam est explicabo ut. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ea molestias eligendi voluptatum magnam atque distinctio consequuntur! Consequuntur accusantium eos ipsa, possimus velit facere molestiae voluptate quos, dolorum ut eum? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa, eum! Impedit omnis a libero quisquam id? Est praesentium error illum iure necessitatibus minima cupiditate, cum inventore fugit, rerum nesciunt tempore!</p>
+                    <p className='mt-4 font-sans text-lg'>{question.questionText}</p>
 
                     <form className='mt-3 w-full relative'>
                         <input
@@ -85,7 +116,7 @@ const Question = () => {
                         {
                             sourceLiist.map((sources) => (
                                 <FAQCard{...sources} key={sources._id} />
-                            ))    
+                            ))
                         }
                     </div>
                 </div>
