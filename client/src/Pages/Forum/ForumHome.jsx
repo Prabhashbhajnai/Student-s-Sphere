@@ -14,32 +14,32 @@ const ForumHome = () => {
         {
             _id: "1",
             question: "How is the infrastructure?",
-            link: "",
+            link: "forum/625daef46a58e26b4c8eafcb",
         },
         {
             _id: "2",
             question: "How is the placement record?",
-            link: "",
+            link: "forum/625db04e6a58e26b4c8eafcd",
         },
         {
             _id: "3",
             question: "What departments or programs have the best reputations?",
-            link: "",
+            link: "forum/625db12a6a58e26b4c8eafce",
         },
         {
             _id: "4",
             question: "Are most of your classes taught by professors or teaching assistants?",
-            link: "",
+            link: "forum/625db1aa6a58e26b4c8eafcf",
         },
         {
             _id: "5",
             question: "Do your professors hold office hours, and will they meet with you outside of class?",
-            link: "",
+            link: "forum/625db7d5aed0a67874ff9e47",
         },
         {
             _id: "6",
             question: "Are your classes lecture-based or discussion-based?",
-            link: "",
+            link: "forum/625db83caed0a67874ff9e51",
         },
     ])
 
