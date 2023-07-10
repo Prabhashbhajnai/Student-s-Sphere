@@ -8,7 +8,9 @@ import gravatar from 'gravatar';
 
 
 // Images
-import logo from "../../Assets/logo.png"
+// import logo from "../../Assets/logo.png"
+import logo from "../../Assets/Student Sphere.png"
+
 
 // components
 import AddQuestionCard from '../Forum/AddQuestionCard';
@@ -98,17 +100,17 @@ const LargeNav = ({ SignIn, SignUp }) => {
                                 className="w-full h-full"
                             />
                         </div>
-                        <h1 className='text-2xl w-54 mr-6'>Student's Hub</h1>
+                        <h1 className='text-2xl w-54 mr-6'>Student's Sphere</h1>
                     </Link>
-                    <div className="w-2/4 bg-white shadow-md p-3 border border-gray-200 rounded">
-                        <div className="flex items-center gap-2 ">
+                    <div className="w-2/4 ">
+                        {/* <div className="flex items-center gap-2 ">
                             <RiSearch2Line />
                             <input
                                 type="search"
                                 placeholder="Search for your books"
                                 className="w-full focus:outline-none"
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className='flex mr-5 mb-4'>
                         <AddQuestionCard />

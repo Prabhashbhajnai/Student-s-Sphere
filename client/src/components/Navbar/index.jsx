@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import gravatar from 'gravatar';
 
 // Images
-import logo from "../../Assets/logo.png"
+// import logo from "../../Assets/logo.png"
+import logo from "../../Assets/Student Sphere.png"
 
 // components
 import SignIn from '../Auth/Signin';
@@ -94,7 +95,7 @@ const LargeNav = ({ SignIn, SignUp }) => {
                                 className="w-full h-full"
                             />
                         </div>
-                        <h1 className='text-2xl w-72 mr-6'>Student's Hub</h1>
+                        <h1 className='text-2xl w-72 mr-6'>Student's Sphere</h1>
                     </Link>
                     {
                         reduxState?.user?.fullname ? (
